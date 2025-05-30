@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'empleados',
+    'SaludApp.apps.SaludAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'sistema_salud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'salud_db',
+        'NAME': 'salud_db3',
         'USER': 'yannis_sql',
         'PASSWORD': '4321',
         'HOST': 'localhost',
@@ -89,6 +89,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
+# Configuración de validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -110,12 +111,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Caracas'
 
 USE_I18N = True
 
 USE_TZ = True
 
+# Authentication Settings
+AUTH_USER_MODEL = 'SaludApp.CustomUser'
+LOGIN_URL = 'login'  # URL para redireccionar cuando se requiere login
+LOGIN_REDIRECT_URL = 'redireccion_por_rol'  # URL a la que redirigir después de un login exitoso
+# LOGOUT_REDIRECT_URL = 'login'  # URL a la que redirigir después de logout
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
