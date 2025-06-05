@@ -12,11 +12,6 @@
 </head>
 
 <body>
-    <style>
-        .btn-ll{
-            background-color: aqua;
-        }
-    </style>
     <!-- Protección del template - Redirección si no está autenticado -->
     {% if not user.is_authenticated %}
     <script>
@@ -53,7 +48,7 @@
             <tbody>
                 {% for visita in visitas_pendientes %}
                 <tr>
-                    <td>{{ visita.empleado.nombre }} {btn-ll{ visita.empleado.apellido }}</td>
+                    <td>{{ visita.empleado.nombre }} {{ visita.empleado.apellido }}</td>
 
                     <td>{{ visita.get_motivo_display }}</td>
 
@@ -75,7 +70,7 @@
                     <td style="display: flex; justify-content: center; gap: 10px;">
                         <!-- Botón para abrir modal de añadir diagnóstico -->
                         <button type="button" 
-                                class="btn btn-sm btn-ll" 
+                                class="btn btn-warning btn-sm" 
                                 data-toggle="modal" 
                                 data-target="#modalDiagnostico{{ visita.id }}">
                             Añadir Diagnóstico
